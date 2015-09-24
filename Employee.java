@@ -36,7 +36,7 @@ public class Employee {
     }
 
     public void setEmpId(int empId) {
-        this.firstName = firstName;
+        this.empId = empId;
     }
 
     public int getMemberNumber() {

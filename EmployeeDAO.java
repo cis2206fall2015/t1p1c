@@ -124,7 +124,7 @@ public class EmployeeDAO {
         myList.stream().forEach((employee) -> {
             sb.append(String.format("%5d : %s, %s, %s, %.2f\n", employee.getEmpId(),
                     employee.getMemberNumber(), employee.getDateTime(),
-                    employee.getExerciseType(), employee.getExerciseTime, employee.getComment()));
+                    employee.getExerciseType(), employee.getExerciseTime(), employee.getComment()));
         });
 
         return sb.toString();
