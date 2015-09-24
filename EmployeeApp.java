@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author Your Name Here
+ * @author The Promised Lan
  */
 public class EmployeeApp {
 
@@ -16,12 +16,11 @@ public class EmployeeApp {
     }
 
     private void menuLoop() {
-        int id;
-        String last, first, homePhone;
-        double salary;
+        int id, memberNumber, exerciseTime;
+        String dateTime, exerciseType, comment;
         String choice = "1";
         while (!choice.equals("0")) {
-            System.out.println("\nEmployee App");
+            System.out.println("\nEmployee Exercise Club");
             System.out.println("0 = Quit");
             System.out.println("1 = List All Records");
             System.out.println("2 = Create New Record");
@@ -36,11 +35,12 @@ public class EmployeeApp {
                     break;
                 case "2":
                     id = Validator.getInt(sc, "New employee ID: ");
-                    last = Validator.getLine(sc, "Last name: ");
-                    first = Validator.getLine(sc, "First name: ");
-                    homePhone = Validator.getLine(sc, "Home phone number: ");
-                    salary = Validator.getDouble(sc, "Yearly salary: ");
-                    empList.createRecord(new Employee(id, last, first, homePhone, salary));
+                    memberNumber = Validator.getInt(sc, "Member Number: ");
+                    dateTime = Validator.getLine(sc, "Date/Time (2015-09-01T10:15:00): ");
+                    exerciseType = Validator.getLine(sc, "Exercise Type: ");
+                    exerciseTime = Validator.getInt(sc, "Exercise Time (Exact minutes - 60, 45, etc): ");
+		    comment = Validator.getLine(sc, "Comment: ");
+                    empList.createRecord(new Employee(id, memberNumber, dateTime, exerciseType, exerciseTime, comment));
                     break;
                 case "3":
                     id = Validator.getInt(sc, "Employee id to retrieve: ");
@@ -48,11 +48,12 @@ public class EmployeeApp {
                     break;
                 case "4":
                     id = Validator.getInt(sc, "Employee ID to update: ");
-                    last = Validator.getLine(sc, "Last name: ");
-                    first = Validator.getLine(sc, "First name: ");
-                    homePhone = Validator.getLine(sc, "Home phone number: ");
-                    salary = Validator.getDouble(sc, "Yearly salary: ");
-                    empList.updateRecord(new Employee(id, last, first, homePhone, salary));
+                    memberNumber = Validator.getInt(sc, "memberNumber: ");
+                    dateTime = Validator.getLine(sc, "Date/Time (2015-09-01T10:15:00): ");
+                    exerciseType = Validator.getLine(sc, "Exercise Type: ");
+                    exerciseTime = Validator.getInt(sc, "Exercise Time (Exact minutes - 60, 45, etc): ");
+		    comment = Validator.getLine(sc, "Comment: ");
+                    empList.updateRecord(new Employee(id, memberNumber, dateTime, exerciseType, exerciseTime, comment));
                     break;
                 case "5":
                     id = Validator.getInt(sc, "Employee ID to delete: ");

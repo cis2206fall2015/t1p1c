@@ -13,7 +13,7 @@ import java.util.List;
 
 /**
  *
- * @author Your Name Here
+ * @author The Promised Lan
  */
 public class EmployeeDAO {
 
@@ -54,10 +54,11 @@ public class EmployeeDAO {
     public void updateRecord(Employee updatedEmployee) {
         for (Employee employee : myList) {
             if (employee.getEmpId() == updatedEmployee.getEmpId()) {
-                employee.setLastName(updatedEmployee.getLastName());
-                employee.setFirstName(updatedEmployee.getFirstName());
-                employee.setHomePhone(updatedEmployee.getHomePhone());
-                employee.setSalary(updatedEmployee.getSalary());
+                employee.setMemberNumber(updatedEmployee.getMemberNumber());
+                employee.setDateTime(updatedEmployee.getDateTime());
+                employee.setExerciseType(updatedEmployee.getExerciseType());
+                employee.setExerciseTime(updatedEmployee.getExerciseTime());
+		employee.setComment(updatedEmployee.getComment());
                 break;
             }
         }
@@ -86,11 +87,12 @@ public class EmployeeDAO {
             while ((line = reader.readLine()) != null) {
                 String[] data = line.split(",");
                 int id = Integer.parseInt(data[0]);
-                String last = data[1];
-                String first = data[2];
-                String homePhone = data[3];
-                double salary = Double.parseDouble(data[4]);
-                Employee employee = new Employee(id, last, first, homePhone, salary);
+                int memberNumber = Integer.parseInt(data[1]);
+                String dateTime = data[2];
+                String exerciseType = data[3];
+                int exerciseTime = Integer.parseInt(data[4]);
+		String comment = data[5];
+                Employee employee = new Employee(id, memberNumber, dateTime, exerciseType, exerciseTime, comment);
                 myList.add(employee);
             }
         } catch (IOException ioe) {
@@ -104,10 +106,11 @@ public class EmployeeDAO {
             for (Employee employee : myList) {
                 writer.write(String.format("%d,%s,%s,%s,%.2f\n",
                         employee.getEmpId(),
-                        employee.getLastName(),
-                        employee.getFirstName(),
-                        employee.getHomePhone(),
-                        employee.getSalary()));
+                        employee.getMemberNumber(),
+                        employee.getDateTime(),
+                        employee.getExerciseType(),
+			employee.getExerciseTime(),
+                        employee.getComment()));
             }
         } catch (IOException ioe) {
             System.out.println("Write file error with " + ioe.getMessage());
@@ -120,8 +123,8 @@ public class EmployeeDAO {
 
         myList.stream().forEach((employee) -> {
             sb.append(String.format("%5d : %s, %s, %s, %.2f\n", employee.getEmpId(),
-                    employee.getLastName(), employee.getFirstName(),
-                    employee.getHomePhone(), employee.getSalary()));
+                    employee.getMemberNumber(), employee.getDateTime(),
+                    employee.getExerciseType(), employee.getExerciseTime, employee.getComment()));
         });
 
         return sb.toString();
